@@ -17,4 +17,19 @@ else:
 #To include the given parameter as the upper bound, you can use the 'randint()' function. It will generate a random integer which includes both given parameters as the upper and lower bounds, respectively.
 #If you only give one parameter to the function, then '0' will be considered as the lower bound and the given number will be considered as the upper bound. But also note that this approach will not work with negative numbers. For that you will have to add both parameters.
 random_number =random.randrange(top_of_Range)
-print(random_number)
+#print(random_number)
+
+while True:
+    user_guess = input("Make a guess: ") #Taking the input from the user to guess the number
+    if user_guess.isdigit():
+        user_guess = int(user_guess)
+    else:
+        print("Please enter a valid number.")
+    quit()
+    
+    #Checking if the number guessed by the user is correct or not. If the user guessed the correct number then the program will end. If the user guessed the wrong number then the user can retry.
+    if user_guess == random_number:
+        print("Congrats, you guessed the correct number!")
+        break
+    else:
+        print("Better luck next time.")
