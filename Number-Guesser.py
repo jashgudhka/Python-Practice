@@ -18,18 +18,25 @@ else:
 #If you only give one parameter to the function, then '0' will be considered as the lower bound and the given number will be considered as the upper bound. But also note that this approach will not work with negative numbers. For that you will have to add both parameters.
 random_number =random.randrange(top_of_Range)
 #print(random_number)
+guesses = 0
 
 while True:
     user_guess = input("Make a guess: ") #Taking the input from the user to guess the number
+    guesses += 1 #Counting the number of guesses done by the user.
     if user_guess.isdigit():
         user_guess = int(user_guess)
+        
+        #Checking if the number guessed by the user is correct or not. If the user guessed the correct number then the program will end. If the user guessed the wrong number then the user can retry.
+        if user_guess == random_number:
+            print("Congrats, you guessed the correct number!")
+            break
+        elif user_guess > random_number: #Giving hints to user to help the user to guess the correct number, this makes the program a little more interactive.
+            print("Hint: Try a smaller number than your last guess.")
+        else:
+            print("Hint: Try a bigger number than your last guess.")
     else:
         print("Please enter a valid number.")
-    quit()
-    
-    #Checking if the number guessed by the user is correct or not. If the user guessed the correct number then the program will end. If the user guessed the wrong number then the user can retry.
-    if user_guess == random_number:
-        print("Congrats, you guessed the correct number!")
-        break
-    else:
-        print("Better luck next time.")
+        print("You tried", guesses, "times.")
+        quit()
+        
+print("You got it in", guesses, "guesses.")
